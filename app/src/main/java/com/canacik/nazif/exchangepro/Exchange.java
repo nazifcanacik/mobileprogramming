@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.canacik.nazif.exchangepro.Model.Helper;
 import com.canacik.nazif.exchangepro.Model.user;
 
 import java.util.*;
@@ -28,7 +29,6 @@ public class Exchange extends AppCompatActivity {
         final Button bLogin = (Button) findViewById(R.id.bLogin);
         final TextView registerLink = (TextView) findViewById(R.id.tvRegisterHere);
 
-
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,26 +37,22 @@ public class Exchange extends AppCompatActivity {
                   pass = etPassword.getText().toString();
 
                 user obj= new user(getApplicationContext());
-                user result =obj.Login(uName,pass);
+                user result = obj.Login(uName,pass);
+                if (result==null) {
 
-                if(result==null)
-                {
                     Intent registerIntent2 = new Intent(Exchange.this, RegisterActivity.class);
 
                     Exchange.this.startActivity(registerIntent2);
-
-                }else{
+                }else {
+                    int id = result.getKod();
+                    Helper.setUserId(id);
                     Intent registerIntent = new Intent(Exchange.this, UserAreaActivity.class);
                     Exchange.this.startActivity(registerIntent);
-
-
-
                 }
+
+
             }
         });
-
-
-
         registerLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

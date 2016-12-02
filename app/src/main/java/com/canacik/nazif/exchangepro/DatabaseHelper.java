@@ -23,6 +23,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String sql="CREATE TABLE user (kod INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT,password TEXT)";
         sqLiteDatabase.execSQL(sql);
+
+        String sql2="CREATE TABLE operation (kod INTEGER PRIMARY KEY AUTOINCREMENT, userid INTEGER,give_amount TEXT,give_type TEXT,take_amount TEXT,take_type TEXT,date TEXT)";
+        sqLiteDatabase.execSQL(sql2);
     }
 
     @Override

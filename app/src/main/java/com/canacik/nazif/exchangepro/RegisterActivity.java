@@ -1,5 +1,6 @@
 package com.canacik.nazif.exchangepro;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,7 +33,8 @@ public class RegisterActivity extends AppCompatActivity {
                 obj.setPassword(pass);
                 obj.setUsername(uName);
                 obj.Insert();
-
+                Intent registerIntent = new Intent(RegisterActivity.this, Exchange.class);
+                RegisterActivity.this.startActivity(registerIntent);
 
             }
         });
