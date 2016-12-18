@@ -69,7 +69,7 @@ public class operation extends DatabaseHelper {
     }
 
     public Integer getUserid() {
-        return userid;
+        return Helper.getUserId();
     }
 
     public void setUserid(Integer userid) {
@@ -100,6 +100,25 @@ public class operation extends DatabaseHelper {
         db.close();
     }
 
+
+
+
+    public operation Get() {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query("operation", new String[]{"kod", "userid", "give_amount","give_type","take_amount","take_type","date"}, null, null, null, "1", null);
+        while (cursor.moveToNext()) {
+
+            this.setKod(cursor.getInt(0));
+            this.setUserid(cursor.getInt(1));
+            this.setGive_amount(cursor.getString(2));
+            this.setGive_type(cursor.getString(3));
+            this.setTake_amount(cursor.getString(4));
+            this.setTake_type(cursor.getString(5));
+            this.setDate(cursor.getString(6));
+        }
+        return this;
+    }
     public List<operation> ListAll() {
         List<operation> list = new ArrayList<operation>();
         SQLiteDatabase db = this.getWritableDatabase();

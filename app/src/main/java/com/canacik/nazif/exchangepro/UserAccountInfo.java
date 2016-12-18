@@ -19,7 +19,7 @@ public class UserAccountInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_useraccount);
         int userId = Helper.getUserId();
-        final Button button = (Button) findViewById(R.id.button);
+      //  final Button button = (Button) findViewById(R.id.button);
     }
 
 
