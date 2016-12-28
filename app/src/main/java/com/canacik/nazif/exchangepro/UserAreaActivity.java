@@ -43,6 +43,8 @@ public class UserAreaActivity extends Activity {
         //Hazırladğımız Adapter'leri Spinner'lara ekliyoruz.
         spinn2.setAdapter(dataAdapterForIller);
         spinn.setAdapter(dataAdapterForIller);
+
+
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,7 +58,7 @@ public class UserAreaActivity extends Activity {
                 obj.setTake_amount(takeAmount);
                 obj.setGive_amount(giveAmount);
                 obj.Insert();
-                System.out.print("eklendi");
+                System.out.print("saved");
             }
         });
 
@@ -75,12 +77,16 @@ public class UserAreaActivity extends Activity {
                     Intent registerIntent2 = new Intent(UserAreaActivity.this, Exchange.class);
                     UserAreaActivity.this.startActivity(registerIntent2);
                 }
-                //Buraya dıger sayfaya gıtme kodlarını yazarsın
+
+                Intent registerIntent2 = new Intent(UserAreaActivity.this, UserAccountInfo.class);
+                UserAreaActivity.this.startActivity(registerIntent2);
+
             }
         });
         //final EditText etUsername = (EditText) findViewById(R.id.etUserName);
         //final EditText etAge = (EditText) findViewById(R.id.etAge);
         //final TextView welcomeMessage = (TextView) findViewById(R.id.tvWelcomeMsg);
+
 
 
     }
