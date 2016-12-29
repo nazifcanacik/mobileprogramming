@@ -9,4 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView5" />
+
+    <GridView
+        android:id="@id/grids"
+        android:numColumns="1"
+        android:gravity="center"
+        android:stretchMode="columnWidth"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+
 </LinearLayout>

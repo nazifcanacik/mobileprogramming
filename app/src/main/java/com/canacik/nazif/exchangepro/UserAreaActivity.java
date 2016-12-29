@@ -10,10 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.canacik.nazif.exchangepro.Model.Helper;
 import com.canacik.nazif.exchangepro.Model.operation;
 
 import java.io.Console;
+import java.util.List;
 
 public class UserAreaActivity extends Activity {
     private String[] moneytype={"KM","$","€"};
@@ -67,15 +70,15 @@ public class UserAreaActivity extends Activity {
             public void onClick(View view) {
 
                 operation tt = new operation(getApplicationContext());
-                operation yy=tt.Get();
-                if (yy==null)
+                List<operation> data=tt.ListAll();
+                if (data==null || data.size()==0)
                 {
-                    Intent registerIntent2 = new Intent(UserAreaActivity.this, RegisterActivity.class);
-                    UserAreaActivity.this.startActivity(registerIntent2);
-                }else       {
 
-                    Intent registerIntent2 = new Intent(UserAreaActivity.this, Exchange.class);
-                    UserAreaActivity.this.startActivity(registerIntent2);
+                    Toast.makeText(getApplicationContext(),"boş bu",Toast.LENGTH_LONG).show();
+                }else
+                {
+                    Helper.setDataList(data);
+                    Toast.makeText(getApplicationContext(),"dolu",Toast.LENGTH_LONG).show();
                 }
 
                 Intent registerIntent2 = new Intent(UserAreaActivity.this, UserAccountInfo.class);

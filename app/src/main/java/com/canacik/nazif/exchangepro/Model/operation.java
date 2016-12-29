@@ -23,9 +23,12 @@ public class operation extends DatabaseHelper {
     private String date;
     private Integer userid;
     private Integer kod;
+    private  Context cntx ;
 
     public operation(Context context) {
         super(context);
+        cntx=context;
+
     }
 
     public String getGive_type() {
@@ -105,34 +108,45 @@ public class operation extends DatabaseHelper {
 
     public operation Get() {
 
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.query("operation", new String[]{"kod", "userid", "give_amount","give_type","take_amount","take_type","date"}, null, null, null, "1", null);
-        while (cursor.moveToNext()) {
+        final String TABLE_NAME = "operation";
 
-            this.setKod(cursor.getInt(0));
-            this.setUserid(cursor.getInt(1));
-            this.setGive_amount(cursor.getString(2));
-            this.setGive_type(cursor.getString(3));
-            this.setTake_amount(cursor.getString(4));
-            this.setTake_type(cursor.getString(5));
-            this.setDate(cursor.getString(6));
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME;
+        SQLiteDatabase db  = this.getReadableDatabase();
+        Cursor cursor      = db.rawQuery(selectQuery, null);
+        String[] data      = null;
+
+        if (cursor.moveToFirst()) {
+            do {
+                this.setKod(cursor.getInt(0));
+                this.setUserid(cursor.getInt(1));
+                this.setGive_amount(cursor.getString(2));
+                this.setGive_type(cursor.getString(3));
+                this.setTake_amount(cursor.getString(4));
+                this.setTake_type(cursor.getString(5));
+                this.setDate(cursor.getString(6));
+            } while (cursor.moveToNext());
         }
+        cursor.close();
         return this;
     }
     public List<operation> ListAll() {
         List<operation> list = new ArrayList<operation>();
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.query("operation", new String[]{"kod", "userid", "give_amount","give_type","take_amount","take_type","date"}, null, null, null, null, null);
-        while (cursor.moveToNext()) {
+        final String TABLE_NAME = "operation";
 
-            this.setKod(cursor.getInt(0));
-            this.setUserid(cursor.getInt(1));
-            this.setGive_amount(cursor.getString(2));
-            this.setGive_type(cursor.getString(3));
-            this.setTake_amount(cursor.getString(4));
-            this.setTake_type(cursor.getString(5));
-            this.setDate(cursor.getString(6));
-            list.add(this);
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME;
+        SQLiteDatabase db  = this.getReadableDatabase();
+        Cursor cursor      = db.rawQuery(selectQuery, null);
+        String[] data      = null;
+        while (cursor.moveToNext()) {
+            operation gg = new operation(cntx);
+            gg.setKod(cursor.getInt(0));
+            gg.setUserid(cursor.getInt(1));
+            gg.setGive_amount(cursor.getString(2));
+            gg.setGive_type(cursor.getString(3));
+            gg.setTake_amount(cursor.getString(4));
+            gg.setTake_type(cursor.getString(5));
+            gg.setDate(cursor.getString(6));
+            list.add(gg);
         }
         return list;
     }
