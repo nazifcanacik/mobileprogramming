@@ -26,6 +26,7 @@ import java.util.*;
 
 public class Exchange extends AppCompatActivity {
 
+
     public static String uName = "";
     public static String pass = "";
 
@@ -64,6 +65,7 @@ public class Exchange extends AppCompatActivity {
                     Exchange.this.startActivity(registerIntent2);
 
                     Toast.makeText(getApplicationContext(),"Please Register",Toast.LENGTH_LONG).show();
+
 
 
                 } else {

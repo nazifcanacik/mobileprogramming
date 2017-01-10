@@ -14,47 +14,48 @@
 
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:layout_marginTop="14dp"
+        android:id="@+id/etPassword"
+        android:textColor="?attr/colorBackgroundFloating"
+        android:textColorHint="@android:color/background_light"
+        android:layout_below="@+id/etUserName"
+        android:layout_alignParentStart="true"
+        android:hint="Password" />
+
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
         android:id="@+id/etUserName"
-        android:layout_alignParentEnd="true"
         android:hint="Username"
         android:textColorLink="@android:color/background_light"
         android:textColor="@android:color/white"
-        android:textColorHint="?attr/colorBackgroundFloating" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/etPassword"
-        android:layout_below="@+id/etUserName"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:hint="Password"
-        android:textColorHint="?attr/colorBackgroundFloating" />
+        android:textColorHint="?attr/colorBackgroundFloating"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="Register Here"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvRegisterHere"
+        android:textColor="?android:attr/colorBackground"
         android:layout_below="@+id/bLogin"
         android:layout_centerHorizontal="true"
-        android:textColor="?android:attr/colorBackground" />
+        android:layout_marginTop="30dp" />
 
     <Button
         android:text="Login"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/bLogin"
+        android:layout_marginTop="14dp"
         android:layout_below="@+id/etPassword"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
